@@ -1,10 +1,11 @@
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
-df = pd.read_csv('dataset_encoded_processed.csv') 
+df = pd.read_csv('dataset_encoded.csv') 
 
+df[['Systolic_BP', 'Diastolic_BP']] = df['Blood Pressure'].str.split('/', expand=True).astype(int)
 # Tất cả các đặc trưng ngoại trừ 'Heart Attack Risk'
-X = df.drop('Heart Attack Risk', axis=1)
+X = df.drop(['Heart Attack Risk','Blood Pressure'], axis=1)
 # Đặc trưng mục tiêu là 'Heart Attack Risk'
 y = df['Heart Attack Risk']
 

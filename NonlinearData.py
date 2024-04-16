@@ -47,3 +47,6 @@ for feature in features:
         
     else:
         print(f"Dữ liệu {feature} có thể có tính chất phi tuyến.")
+        
+        
+
