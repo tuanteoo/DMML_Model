@@ -2,7 +2,7 @@ import pandas as pd
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 # Đọc dữ liệu từ file CSV
-X = pd.read_csv('dataset_train_processed.csv')
+X = pd.read_csv('dataset_train.csv')
 
 # Thêm một cột hằng số vào X
 X['Intercept'] = 1

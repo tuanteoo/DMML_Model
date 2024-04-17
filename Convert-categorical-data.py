@@ -1,4 +1,4 @@
-import pandas as pd
+
 
 # # Đọc dữ liệu từ file CSV
 # df_train = pd.read_csv('dataset_train.csv')
@@ -18,7 +18,7 @@ import pandas as pd
 # # df_train.to_csv('dataset_train.csv', index=False)
 # # df_test.to_csv('dataset_test.csv', index=False)
 
-
+import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
 # Đọc dữ liệu từ file CSV
@@ -27,6 +27,8 @@ df = pd.read_csv('heart_attack_prediction_dataset.csv')
 # Khởi tạo LabelEncoder
 le = LabelEncoder()
 df_encode = df.drop(['Patient ID','Income','Country','Continent','Hemisphere'], axis=1)
+df_encode[['Systolic_BP', 'Diastolic_BP']] = df['Blood Pressure'].str.split('/', expand=True).astype(int)
+
 # Áp dụng Label Encoding cho mỗi cột phân loại
 df_encode['Sex'] = le.fit_transform(df['Sex'])
 df_encode['Diet'] = le.fit_transform(df['Diet'])
