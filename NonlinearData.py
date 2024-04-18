@@ -3,17 +3,17 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 import pandas as pd
 
-df = pd.read_csv('dataset_train_processed.csv')
+df = pd.read_csv('dataset_train.csv')
 dflabel = pd.read_csv('label_train.csv')
 
 # Danh sách các features
-features = ['Age', 'Cholesterol', 'Heart Rate', 
-            'Exercise Hours Per Week', 'Previous Heart Problems', 'Stress Level',
-            'Sedentary Hours Per Day', 'BMI', 'Triglycerides', 'Physical Activity Days Per Week',
-            'Sleep Hours Per Day', 'Systolic_BP', 'Diastolic_BP']
+features = ['age','sex','chest pain type'
+            ,'resting bp s','cholesterol','fasting blood sugar',
+            'resting ecg','max heart rate','exercise angina',
+            'oldpeak','ST slope']
 
 # Biến target
-target = 'Heart Attack Risk'
+target = 'target'
 
 # Xây dựng mô hình tuyến tính cho từng feature
 for feature in features:

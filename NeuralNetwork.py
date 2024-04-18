@@ -7,10 +7,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report, accuracy_score
 
 # Assuming the files are in CSV format. Adjust the read function if they are in a different format.
-dataset_train = pd.read_csv('dataset_train.csv')
-dataset_test = pd.read_csv('dataset_test.csv')
-label_train = pd.read_csv('label_train.csv')
-label_test = pd.read_csv('label_test.csv')
+dataset_train = pd.read_csv('dataset_trainT.csv')
+dataset_test = pd.read_csv('dataset_testT.csv')
+label_train = pd.read_csv('label_trainT.csv')
+label_test = pd.read_csv('label_testT.csv')
 
 scaler = StandardScaler()
 dataset_train_scaled = scaler.fit_transform(dataset_train)
@@ -18,15 +18,18 @@ dataset_test_scaled = scaler.transform(dataset_test)
 
 # Define the model
 model = Sequential()
-model.add(Dense(64, input_dim=dataset_train_scaled.shape[1], activation='relu'))  # Adjust the input_dim based on features
+model.add(Dense(64, input_dim=dataset_train_scaled.shape[1], activation='relu'))
 model.add(Dense(32, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))  # Use 'softmax' for multi-class classification
 
 # Compile the model
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])  # Use 'categorical_crossentropy' for multi-class
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # Fit the model
-history = model.fit(dataset_train_scaled, label_train, epochs=100, batch_size=10, verbose=1, validation_split=0.2)
+history = model.fit(dataset_train_scaled,
+                    label_train, 
+                    epochs=100, batch_size=10, verbose=1, 
+                    validation_split=0.2)
 
 # Evaluate the model
 loss, accuracy = model.evaluate(dataset_test_scaled, label_test, verbose=0)

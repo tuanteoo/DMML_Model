@@ -7,10 +7,10 @@ from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import GridSearchCV
 
 # Assuming the files are in CSV format. Adjust the read function if they are in a different format.
-dataset_train = pd.read_csv('dataset_train.csv')
-dataset_test = pd.read_csv('dataset_test.csv')
-label_train = pd.read_csv('label_train.csv')
-label_test = pd.read_csv('label_test.csv')
+dataset_train = pd.read_csv('dataset_trainT.csv')
+dataset_test = pd.read_csv('dataset_testT.csv')
+label_train = pd.read_csv('label_trainT.csv')
+label_test = pd.read_csv('label_testT.csv')
 
 # If the labels are not in a single column, adjust accordingly.
 # For example, if they are one-hot encoded, you might need to convert them to a single label column.
@@ -22,8 +22,8 @@ svm_pipeline = make_pipeline(StandardScaler(), SVC(kernel='rbf'))
 svm_pipeline.fit(dataset_train, label_train.values.ravel())
 
 # Set the parameters by cross-validation
-tuned_parameters = [{'svc__C': [0.1, 1, 10, 100],
-                     'svc__gamma': [1, 0.1, 0.01, 0.001],
+tuned_parameters = [{'svc__C': [1, 10, 100, 1000],
+                     'svc__gamma': [0.001,0.01,0.1],
                      'svc__kernel': ['rbf']}]
 
 clf = GridSearchCV(svm_pipeline, tuned_parameters, scoring='accuracy')
