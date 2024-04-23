@@ -1,11 +1,20 @@
 import pandas as pd
 
-df = pd.read_csv('heart_statlog_cleveland_hungary_final.csv')
+df = pd.read_csv('dataset_processed.csv')
+# df[['Systolic_BP','Diastolic_BP']] = df['Blood Pressure'].str.split('/',expand=True).astype(int)
+
+# df = df.drop(['Patient ID','Country','Continent','Hemisphere','Income','Blood Pressure'],axis=1)
+# df.to_csv('dataset_processed.csv',index=False)
 
 
-duplicates = df[df.duplicated(subset=['age','sex','chest pain type','resting bp s','cholesterol','fasting blood sugar','resting ecg','max heart rate','exercise angina','oldpeak','ST slope'])]
-print(f"Number of duplicate rows: {duplicates}")
-duplicates.to_csv('duplicate_data.csv')
 
+from sklearn.preprocessing import LabelEncoder
 
+# Khởi tạo LabelEncoder
+le = LabelEncoder()
 
+df['Sex'] = le.fit_transform(df['Sex'])
+df['Diet'] = le.fit_transform(df['Diet']) # 0-Average 1-Healthy 2-Unhealthy
+
+# Lưu dataframe đã được xử lý vào file csv
+df.to_csv('dataset_processed.csv', index=False)

@@ -7,10 +7,10 @@ from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import GridSearchCV
 
 # Assuming the files are in CSV format. Adjust the read function if they are in a different format.
-dataset_train = pd.read_csv('dataset_trainT.csv')
-dataset_test = pd.read_csv('dataset_testT.csv')
-label_train = pd.read_csv('label_trainT.csv')
-label_test = pd.read_csv('label_testT.csv')
+dataset_train = pd.read_csv('dataset_train.csv')
+dataset_test = pd.read_csv('dataset_test.csv')
+label_train = pd.read_csv('label_train.csv')
+label_test = pd.read_csv('label_test.csv')
 
 # If the labels are not in a single column, adjust accordingly.
 # For example, if they are one-hot encoded, you might need to convert them to a single label column.

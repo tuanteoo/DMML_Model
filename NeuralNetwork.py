@@ -7,10 +7,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report, accuracy_score
 
 # Assuming the files are in CSV format. Adjust the read function if they are in a different format.
-dataset_train = pd.read_csv('dataset_trainT.csv')
-dataset_test = pd.read_csv('dataset_testT.csv')
-label_train = pd.read_csv('label_trainT.csv')
-label_test = pd.read_csv('label_testT.csv')
+dataset_train = pd.read_csv('dataset_train.csv')
+dataset_test = pd.read_csv('dataset_test.csv')
+label_train = pd.read_csv('label_train.csv')
+label_test = pd.read_csv('label_test.csv')
 
 scaler = StandardScaler()
 dataset_train_scaled = scaler.fit_transform(dataset_train)

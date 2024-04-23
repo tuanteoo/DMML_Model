@@ -25,27 +25,27 @@ print(f"Accuracy: {accuracy * 100:.2f}%")
 # Detailed classification report
 print(classification_report(y_test, y_pred))
 
-# Define the parameter grid
-param_grid = {
-    'n_estimators': [300, 400,500],
-    'max_depth': [ None,10,20, 30],
-    # Add other parameters here
-}
+# # Define the parameter grid
+# param_grid = {
+#     'n_estimators': [300, 400,500],
+#     'max_depth': [ None,10,20, 30],
+#     # Add other parameters here
+# }
 
-# Initialize the Grid Search model
-grid_search = GridSearchCV(estimator=rf_classifier, param_grid=param_grid, cv=5, n_jobs=-1, verbose=2)
+# # Initialize the Grid Search model
+# grid_search = GridSearchCV(estimator=rf_classifier, param_grid=param_grid, cv=5, n_jobs=-1, verbose=2)
 
-# Fit the grid search to the data
-grid_search.fit(X_train, y_train.values.ravel())
+# # Fit the grid search to the data
+# grid_search.fit(X_train, y_train.values.ravel())
 
-# Print the best parameters
-print("Best parameters found: ", grid_search.best_params_)
+# # Print the best parameters
+# print("Best parameters found: ", grid_search.best_params_)
 
-# Use the best estimator for making predictions
-best_rf = grid_search.best_estimator_
-y_pred = best_rf.predict(X_test)
+# # Use the best estimator for making predictions
+# best_rf = grid_search.best_estimator_
+# y_pred = best_rf.predict(X_test)
 
-# Evaluate the best model
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Accuracy of the best model: {accuracy * 100:.2f}%")
+# # Evaluate the best model
+# accuracy = accuracy_score(y_test, y_pred)
+# print(f"Accuracy of the best model: {accuracy * 100:.2f}%")
 

@@ -4,10 +4,10 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
 # Load your datasets
-dataset_train = pd.read_csv('dataset_trainT.csv')
-dataset_test = pd.read_csv('dataset_testT.csv')
-label_train = pd.read_csv('label_trainT.csv')
-label_test = pd.read_csv('label_testT.csv')
+dataset_train = pd.read_csv('dataset_train.csv')
+dataset_test = pd.read_csv('dataset_test.csv')
+label_train = pd.read_csv('label_train.csv')
+label_test = pd.read_csv('label_test.csv')
 
 # Preprocess your data here (scaling, encoding, etc.)
 
